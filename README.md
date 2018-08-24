@@ -36,7 +36,7 @@ Other features the site is using
 
 * Webpack
 * CSS Modules
-* [Firebase](https://firebase.google.com/docs/){:target="_blank"}
+* <a href="https://firebase.google.com/docs/" target="_blank">Firebase</a>
   * Sign in with google
 * [Axios](https://www.npmjs.com/package/axios)
 * [React Simple Chatbot](https://lucasbassetti.com.br/react-simple-chatbot/)
