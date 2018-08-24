@@ -14,7 +14,7 @@ I am a graduate from Sheridan College's [Computer Systems Technology – Softwar
 
 I have a passion for programming and game development.  What I enjoy the most about programming is seeing the application I am developing “come to life” as in seeing everything working together as intended.  I love to learn and I’m always interested in doing better or taking ideas from others, I have learned to learn from the mistakes I make to not repeat them in the future.  
 
-On my free time I like to develop random applications or games.  I have developed my own [discord bot](https://github.com/MichaelDessureault/Discord-Bot)for me and my friends to use in your discord server.  I have developed a few small games with unity in C# such as [chess](https://github.com/MichaelDessureault/Chess), [tetris](https://github.com/MichaelDessureault/Tetris) and more. 
+On my free time I like to develop random applications or games.  I have developed my own [discord bot](https://github.com/MichaelDessureault/Discord-Bot) for me and my friends to use in your discord server.  I have developed a few small games with unity in C# such as [chess](https://github.com/MichaelDessureault/Chess), [tetris](https://github.com/MichaelDessureault/Tetris) and more. 
 
 I am very easy to get along with, not a shy person, and I tend to learn quickly on most stuff.
 
