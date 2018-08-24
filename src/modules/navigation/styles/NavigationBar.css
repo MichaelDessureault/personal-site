@@ -1,0 +1,17 @@
+.separator {
+  border-bottom: solid 2px #959fa9;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.mainContainer {
+  height: 100px;
+}
+
+.dropDownMenuContainer {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
