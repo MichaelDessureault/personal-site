@@ -8,14 +8,15 @@ import createReactClass from "create-react-class"
 
 const Item = (props) => {
   return (
-    // <Link
-    //   className={`${styles.itemContainer} ${styles.noDecoration}`}
-    //   to={ props.noLink ? "" : { pathname: props.link } } // state is passible with the to object
-    // >
+    <Link
+      className={`${styles.itemContainer} ${styles.noDecoration}`}
+      to={ props.noLink ? "" : { pathname: props.link } } // state is passible with the to object
+      onClick={props.onClick}
+    >
       <div>
         {props.label}
       </div>
-    // </Link>
+    </Link>
   )
 }
 
@@ -32,7 +33,7 @@ const DropdownItem = onClickOutside(
       return (
         <div>
           <Item 
-            className={"dropdownItem"} 
+            className={"ignoreOnClickOutside"} 
             label={this.props.label} 
             noLink={true}
             onClick={this.props.handleOpenMenu}/>
@@ -62,9 +63,9 @@ class NavigationBar extends Component {
     }
   }
 
-  handleOpenMenu = (menuName) => {
+  handleToggleMenu = (menuName) => {
     switch (menuName) {
-      case "api" : this.setState({ apiDropdownVisible: true }); break;
+      case "api" : this.setState({ apiDropdownVisible: !this.state.apiDropdownVisible }); break;
       default: break;
     }
   } 
@@ -81,13 +82,11 @@ class NavigationBar extends Component {
           <DropdownItem 
             label={"Api's"}
             visible={this.state.apiDropdownVisible}
-            handleCloseMenu={(e) => { 
-              e.preventDefault()
-              this.handleCloseMenu("api")
-            }}
+            outsideClickIgnoreClass="ignoreOnClickOutside"
+            handleCloseMenu={() => this.handleCloseMenu("api")}
             handleOpenMenu={(e) => {
               e.preventDefault()
-              this.handleOpenMenu("api")
+              this.handleToggleMenu("api")
             }}
             >
             <Item link={"/gipfy"}  label={"Gipfy"} />

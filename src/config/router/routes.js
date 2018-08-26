@@ -1,14 +1,16 @@
-import React from "react";
-import { 
-  Router, 
-  Route, 
-  hashHistory, 
-  IndexRoute, 
-  browserHistory 
-} from 'react-router';
+import React from 'react'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
-import { syncHistoryWithStore } from 'react-router-redux';
+import App from '../../App'
+import * as modules from '../../modules/'
 
-// auth check
-// import { checkIfAuthed } from 'helpers/auth';
-// import authRedirectFilter from './redirection"
+export default () => {
+  return (
+    <BrowserRouter>
+    <Switch>
+      <Route exact path='' component={App}/>
+      <Route path='/about'  component={modules.AboutContainer}/>
+    </Switch>
+    </BrowserRouter>
+  )
+ }

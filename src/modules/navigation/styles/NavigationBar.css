@@ -4,14 +4,24 @@
   margin-bottom: 10px;
 }
 
-.mainContainer {
-  height: 100px;
-}
-
 .dropDownMenuContainer {
   display: block;
 }
 
 .invisible {
   display: none;
+}
+
+.mainContainer {
+  width: 100%;
+  padding: 15px;
+  composes: flexRowWrapSpaceBetweenCenter from '../../../sharedStyles/flexstyles.css'
+}
+
+.leftContainer {
+  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css'
+}
+
+.rightContainer {
+  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css'
 }

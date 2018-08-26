@@ -5,7 +5,7 @@ import Wrapper from '../component/Wrapper'
 class WrapperContainer extends Component {
   render () {
     return (
-      <Wrapper children={this.props.children}/>
+      <Wrapper children={this.props.children} backgroundImage={this.props.backgroundImage}/>
     )
   }
 }
