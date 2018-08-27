@@ -9,8 +9,6 @@ import { configureStore } from './store'
 
 const store = configureStore()
 
-console.log(AppRoutes)
-
 ReactDOM.render(
   <Provider store={store}>
     <AppRoutes />

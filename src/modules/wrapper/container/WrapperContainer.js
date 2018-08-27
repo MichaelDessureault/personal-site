@@ -38,14 +38,11 @@ class WrapperContainer extends Component {
   }
 
   render () {
-    return (
-      <div>
-        { this.props.isPageWrapper && this.isNotFooterAndOrNavigationBar()
-          ? <PageWrapper children={this.props.children}/>
-          : <ElementWrapper children={this.props.children}/>
-        }
-      </div>
-    )
+    if (this.props.isPageWrapper && this.isNotFooterAndOrNavigationBar()) {
+      return (<PageWrapper children={this.props.children}/>)
+    } else {
+      return (<ElementWrapper children={this.props.children}/>)
+    }
   }
 }
 

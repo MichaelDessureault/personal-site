@@ -2,12 +2,17 @@
 .mainContainer {
   width: 100%;
   background-color: blue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
 }
 
 /* The container for the component */
 .componentContainer {
   width: 100%;
-  padding: 15px;
+  height: 100%;
   background-color: red;
   composes: flexRowWrapSpaceBetweenCenter from '../../../sharedStyles/flexstyles.css';
 }

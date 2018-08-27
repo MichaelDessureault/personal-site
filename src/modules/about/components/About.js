@@ -8,29 +8,42 @@ class About extends Component {
 
   constructor (props) {
     super(props)
-    this.myRef = React.createRef()
+    this.aboutSite = React.createRef()
+    this.aboutMe = React.createRef()
   }
 
-  componentWillMount () {
-    if ( !isUndefinedOrNull(this.props.location.state) && this.props.location.state.aboutSite) {
-      this.scrollToDomRef()
-    }
+  componentDidMount () {
+    this.scrollToDomRef();
   }
 
   scrollToDomRef = () => {
-    const domNode = ReactDOM.findDOMNode(this.domRef.current)
-    domNode.scrollIntoView()
+    const domNode = ReactDOM.findDOMNode(
+      (this.props.aboutMeStartPoint) 
+      ? this.aboutMe.current 
+      : this.aboutSite.current
+    )
+
+    console.log('domNode', domNode)
+
+    if (domNode) {
+      console.log('scroll', domNode.offsetTop)
+      window.scrollTo(0, domNode.offsetTop)
+    }
   }
   
   render () {
+
+    console.log(this.myRef)
+    console.log('aboutStartPoint: ' + this.props.aboutMeStartPoint)
+
     return (
       <div>
-        <div id={"about1"} style={{ height: 15000 }}>
-          <a href="#about2"> Goto about2 </a>
+        <div id={"aboutMe"} ref={this.aboutMe} style={{ height: 15000 }}>
+          <a href="#aboutSite"> Goto about2 </a>
           {"About"}
         </div>
 
-        <div ref={this.myRef}>
+        <div id={"aboutSite"} ref={this.aboutSite}>
           {"About2"}
         </div>
       </div>

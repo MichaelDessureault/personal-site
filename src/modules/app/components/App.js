@@ -33,6 +33,7 @@ const TextBlock = (props) => {
 
 
 class App extends Component {
+
   render() {
     return (
       <div className={styles.App}>
@@ -60,7 +61,9 @@ class App extends Component {
                 centerContent={true}
               >
                 <p> Do some bio stuff </p>
-                <Link to={{ pathname: navigationLinks.about.link }}> 
+                <Link 
+                  to={{ pathname: navigationLinks.about.link }} 
+                  onClick={(e) => this.props.dispatchAboutStartPoint(true)}> 
                   Learn more 
                 </Link>
               </TextBlock>
@@ -77,7 +80,9 @@ class App extends Component {
                 centerContent={true}
               >
                 <p> Do about site berif</p>
-                <Link to={{ pathname: navigationLinks.about.link, state: { aboutSite: true }}}> 
+                <Link 
+                  to={{ pathname: navigationLinks.about.link }}
+                  onClick={(e) => this.props.dispatchAboutStartPoint(false)}> 
                   Learn more 
                 </Link>
               </TextBlock>

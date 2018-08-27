@@ -27,21 +27,31 @@ class Item extends Component {
     noLink: false,
   }
 
-  render () {
-    const { navLinkObj, noLink, onClick } = this.props;
-    const link  = navLinkObj !== undefined ? navLinkObj.link  : this.props.link
+  handleOnClick = (e) => {
+    if (this.props.noLink) {
+      e.preventDefault();
+    }
+
+    if (this.props.onClickEvent) {
+      this.props.onClickEvent()
+    }
+  }
+
+  render() {
+    const { navLinkObj } = this.props;
+    const link = navLinkObj !== undefined ? navLinkObj.link : this.props.link
     const label = navLinkObj !== undefined ? navLinkObj.label : this.props.label
 
     return (
       <Link
-      className={ `${styles.itemContainer} ${styles.noDecoration}` }
-      to={ noLink ? "" : { pathname: link } } // state is passible with the to object
-      onClick={ onClick }
-    >
-      <div>
-        { label }
-      </div>
-    </Link>
+        className={`${styles.itemContainer} ${styles.noDecoration}`}
+        to={{ pathname: link }}
+        onClick={this.handleOnClick}
+      >
+        <div>
+          {label}
+        </div>
+      </Link>
     )
   }
 }
@@ -55,20 +65,20 @@ const DropdownItem = onClickOutside(
       }
     },
 
-    render () {
+    render() {
       return (
         <div>
-          <Item 
-            className={"ignoreOnClickOutside"} 
-            label={this.props.label} 
+          <Item
+            className={"ignoreOnClickOutside"}
+            label={this.props.label}
             noLink={true}
-            onClick={this.props.handleOpenMenu}/>
+            onClickEvent={this.props.handleOpenMenu} />
           <div
             className={
               this.props.visible ? styles.dropDownMenuContainer : styles.invisible
             }
           >
-            { this.props.children }
+            {this.props.children}
           </div>
         </div>
       )
@@ -77,7 +87,7 @@ const DropdownItem = onClickOutside(
 )
 
 class NavigationBar extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     // dropdown sections
     this.state = { apiDropdownVisible: false }
@@ -85,38 +95,35 @@ class NavigationBar extends Component {
 
   handleCloseMenu = (menuName) => {
     switch (menuName) {
-      case "api" : this.setState({ apiDropdownVisible: false }); break;
+      case "api": this.setState({ apiDropdownVisible: false }); break;
       default: break;
     }
   }
 
   handleToggleMenu = (menuName) => {
     switch (menuName) {
-      case "api" : this.setState({ apiDropdownVisible: !this.state.apiDropdownVisible }); break;
+      case "api": this.setState({ apiDropdownVisible: !this.state.apiDropdownVisible }); break;
       default: break;
     }
   }
 
-  render () {
+  render() {
     return (
       <div className={styles.componentContainer}>
         <div className={styles.leftContainer}>
-          <Item navLinkObj={navigationLinks.home}/>
-          <Item navLinkObj={navigationLinks.about}/>
-          <Item navLinkObj={navigationLinks.chatbot}/>
+          <Item navLinkObj={navigationLinks.home} />
+          <Item navLinkObj={navigationLinks.about} />
+          <Item navLinkObj={navigationLinks.chatbot} />
 
-          <DropdownItem 
+          <DropdownItem
             label={"Api's"}
             visible={this.state.apiDropdownVisible}
             outsideClickIgnoreClass="ignoreOnClickOutside"
             handleCloseMenu={() => this.handleCloseMenu("api")}
-            handleOpenMenu={(e) => {
-              e.preventDefault()
-              this.handleToggleMenu("api")
-            }}
-            >
-            <Item navLinkObj={navigationLinks.gipfy}/>
-            <Item navLinkObj={navigationLinks.googlemaps}/>
+            handleOpenMenu={() => this.handleToggleMenu("api")}
+          >
+            <Item navLinkObj={navigationLinks.gipfy} />
+            <Item navLinkObj={navigationLinks.googlemaps} />
           </DropdownItem>
         </div>
 
