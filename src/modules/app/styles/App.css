@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.titleContainer { 
+  composes: flexColumnWrap from '../../../sharedStyles/flexstyles.css';
+  justify-content: flex-end;
+  height: 40vh;
+}
+
+.title {
+  color: white;
+  text-align: left;
+  font-size: 3em;
+}
+
+
+/* @keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */

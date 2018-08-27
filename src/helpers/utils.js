@@ -12,7 +12,7 @@
  * @param {Array} validTypes 
  * @returns Boolean - true if valid
  */
-function isValidType (value, validTypes = []) {
+export function isValidType (value, validTypes = []) {
   for (let i = 0; i < validTypes.length; i++) {
       // array has to be checked differently because
       // typeof() array object will be "object"
@@ -71,7 +71,7 @@ export function toLowerCase (value) {
 */
 export function firstLetterToUpperCase (value) {
   if (isValidType(value, ["string"])) {
-      return toUpperCase(string.charAt(0)) + string.slice(1);
+      return toUpperCase(value.charAt(0)) + value.slice(1);
   }
   return value;
 }

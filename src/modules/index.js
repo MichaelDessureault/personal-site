@@ -1,3 +1,5 @@
 export { default as NavigationBarContainer } from './navigation/container/NavigationBarContainer'
 export { default as WrapperContainer } from './wrapper/container/WrapperContainer'
 export { default as AboutContainer } from './about/container/AboutContainer'
+export { default as AppContainer } from './app/container/AppContainer'
+export { default as FooterContainer } from './footer/container/FooterContainer'

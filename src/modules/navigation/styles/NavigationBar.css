@@ -1,3 +1,17 @@
+/* The container for the actually container */
+.mainContainer {
+  width: 100%;
+  background-color: blue;
+}
+
+/* The container for the component */
+.componentContainer {
+  width: 100%;
+  padding: 15px;
+  background-color: red;
+  composes: flexRowWrapSpaceBetweenCenter from '../../../sharedStyles/flexstyles.css';
+}
+
 .separator {
   border-bottom: solid 2px #959fa9;
   margin-top: 6px;
@@ -12,16 +26,10 @@
   display: none;
 }
 
-.mainContainer {
-  width: 100%;
-  padding: 15px;
-  composes: flexRowWrapSpaceBetweenCenter from '../../../sharedStyles/flexstyles.css'
-}
-
 .leftContainer {
-  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css'
+  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css';
 }
 
 .rightContainer {
-  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css'
+  composes: flexRowNoWrap from '../../../sharedStyles/flexstyles.css';
 }

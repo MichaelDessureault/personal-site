@@ -6,18 +6,44 @@ import styles from '../styles/NavigationBar.css'
 import onClickOutside from "react-onclickoutside"
 import createReactClass from "create-react-class"
 
-const Item = (props) => {
-  return (
-    <Link
-      className={`${styles.itemContainer} ${styles.noDecoration}`}
-      to={ props.noLink ? "" : { pathname: props.link } } // state is passible with the to object
-      onClick={props.onClick}
+import { navigationLinks } from '../../../helpers/navigation'
+import { keys, objectToArray } from '../../../helpers/utils'
+
+
+
+class Item extends Component {
+  static propTypes = {
+    navLinkObj: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }),
+    link: PropTypes.string,
+    label: PropTypes.string,
+    noLink: PropTypes.bool,
+    onClick: PropTypes.func,
+  }
+
+  static defaultProps = {
+    noLink: false,
+  }
+
+  render () {
+    const { navLinkObj, noLink, onClick } = this.props;
+    const link  = navLinkObj !== undefined ? navLinkObj.link  : this.props.link
+    const label = navLinkObj !== undefined ? navLinkObj.label : this.props.label
+
+    return (
+      <Link
+      className={ `${styles.itemContainer} ${styles.noDecoration}` }
+      to={ noLink ? "" : { pathname: link } } // state is passible with the to object
+      onClick={ onClick }
     >
       <div>
-        {props.label}
+        { label }
       </div>
     </Link>
-  )
+    )
+  }
 }
 
 const DropdownItem = onClickOutside(
@@ -53,6 +79,7 @@ const DropdownItem = onClickOutside(
 class NavigationBar extends Component {
   constructor (props) {
     super(props);
+    // dropdown sections
     this.state = { apiDropdownVisible: false }
   }
 
@@ -68,16 +95,15 @@ class NavigationBar extends Component {
       case "api" : this.setState({ apiDropdownVisible: !this.state.apiDropdownVisible }); break;
       default: break;
     }
-  } 
+  }
 
   render () {
-    console.log('NavigationBar')
     return (
-      <div className={styles.mainContainer}>
+      <div className={styles.componentContainer}>
         <div className={styles.leftContainer}>
-          <Item link={"/"}        label={"Home"} />
-          <Item link={"/about"}   label={"About"} />
-          <Item link={"/chatbot"} label={"Chatbot"} />
+          <Item navLinkObj={navigationLinks.home}/>
+          <Item navLinkObj={navigationLinks.about}/>
+          <Item navLinkObj={navigationLinks.chatbot}/>
 
           <DropdownItem 
             label={"Api's"}
@@ -89,8 +115,8 @@ class NavigationBar extends Component {
               this.handleToggleMenu("api")
             }}
             >
-            <Item link={"/gipfy"}  label={"Gipfy"} />
-            <Item link={"/google"} label={"Google Maps"} />
+            <Item navLinkObj={navigationLinks.gipfy}/>
+            <Item navLinkObj={navigationLinks.googlemaps}/>
           </DropdownItem>
         </div>
 
