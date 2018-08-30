@@ -1,4 +1,4 @@
-export { default as NavigationBarContainer } from './navigation/container/NavigationBarContainer'
+export { default as HeaderContainer } from './header/container/HeaderContainer'
 export { default as WrapperContainer } from './wrapper/container/WrapperContainer'
 export { default as AboutContainer } from './about/container/AboutContainer'
 export { default as AppContainer } from './app/container/AppContainer'

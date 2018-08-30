@@ -7,9 +7,9 @@ import App from '../components/App'
 import { NavigationBarContainer, WrapperContainer } from '../../index'
 
 import { operators as aboutActionCreators } from '../../../store/modules/about'
+import { detectMobile } from '../../../helpers/utils'
 
 class AppContainer extends Component {
-
   dispatchAboutStartPoint = (value) => {
     this.props.handleAboutStartPoint(value)
   }

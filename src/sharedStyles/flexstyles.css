@@ -12,13 +12,13 @@
 .flexRowWrapCenter {
   display: flex;
   flex-flow: row wrap;
-  align-content: center;
+  align-items: center;
 }
 
 .flexRowNoWrapCenter {
   display: flex;
   flex-flow: row nowrap;
-  align-content: center;
+  align-items: center;
 }
 
 .flexRowWrapSpaceBetween {
@@ -36,14 +36,14 @@
 .flexRowWrapSpaceBetweenCenter {
   display: flex;
   flex-flow: row wrap;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
 }
 
 .flexRowNoWrapSpaceBetweenCenter {
   display: flex;
   flex-flow: row nowrap;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -64,13 +64,13 @@
 .flexColumnWrapCenter {
   display: flex;
   flex-flow: column wrap;
-  align-content: center;
+  align-items: center;
 }
 
 .flexColumnNoWrapCenter {
   display: flex;
   flex-flow: column nowrap;
-  align-content: center;
+  align-items: center;
 }
 
 /*#endregion Felx Column */

@@ -12,19 +12,19 @@
  * @param {Array} validTypes 
  * @returns Boolean - true if valid
  */
-export function isValidType (value, validTypes = []) {
+export function isValidType(value, validTypes = []) {
   for (let i = 0; i < validTypes.length; i++) {
-      // array has to be checked differently because
-      // typeof() array object will be "object"
-      if (validTypes[i].toLowerCase() === "array") {
-          if (Array.isArray(value)) {
-              return true;
-          }
+    // array has to be checked differently because
+    // typeof() array object will be "object"
+    if (validTypes[i].toLowerCase() === "array") {
+      if (Array.isArray(value)) {
+        return true;
       }
-      
-      if (typeof(value) === validTypes[i].toLowerCase()) {
-          return true;
-      }
+    }
+
+    if (typeof (value) === validTypes[i].toLowerCase()) {
+      return true;
+    }
   }
   return false;
 }
@@ -39,9 +39,9 @@ export function isValidType (value, validTypes = []) {
 * @param {String} value 
 * @returns The upper case string if successfull otherwise the same value passed.
 */
-export function toUpperCase (value) {
+export function toUpperCase(value) {
   if (isValidType(value, ["string"])) {
-      return value.toUpperCase();
+    return value.toUpperCase();
   }
   return value;
 }
@@ -54,9 +54,9 @@ export function toUpperCase (value) {
 * @param {String} value 
 * @returns The lower case string if successfull otherwise the same value passed.
 */
-export function toLowerCase (value) {
+export function toLowerCase(value) {
   if (isValidType(value, ["string"])) {
-      return value.toLowerCase();
+    return value.toLowerCase();
   }
   return value;
 }
@@ -69,16 +69,16 @@ export function toLowerCase (value) {
 * @param {String} value 
 * @return The string capitalized if possible otherwise returns the same value passed.
 */
-export function firstLetterToUpperCase (value) {
+export function firstLetterToUpperCase(value) {
   if (isValidType(value, ["string"])) {
-      return toUpperCase(value.charAt(0)) + value.slice(1);
+    return toUpperCase(value.charAt(0)) + value.slice(1);
   }
   return value;
 }
 
-export function isStringNotEmpty (value) {
-  if (isValidType(value, ["string"])){
-      return (value.trim().length !== 0)
+export function isStringNotEmpty(value) {
+  if (isValidType(value, ["string"])) {
+    return (value.trim().length !== 0)
   }
   return false;
 }
@@ -126,9 +126,9 @@ export function clamp(value, min, max) {
 * @param  {Object} obj 
 * @returns Array of keys or null if invalid object passed.
 */
-export function keys (obj) {
+export function keys(obj) {
   if (isValidType(obj, ["object"])) {
-      return Object.keys(obj)
+    return Object.keys(obj)
   }
   return null;
 }
@@ -141,11 +141,11 @@ export function keys (obj) {
 * @param {Object} obj 
 * @returns Array if the obj passed was an object, otherwise null
 */
-export function objectToArray (obj) {
+export function objectToArray(obj) {
   if (isValidType(obj, ["object"])) {
-      let array = []
-      obj.keys().forEach(key => array.push(obj[key]))
-      return array;
+    let array = []
+    keys(obj).forEach(key => array.push(obj[key]))
+    return array;
   }
   return null;
 }
@@ -166,5 +166,3 @@ export function isUndefinedOrNull(value) {
 }
 
 //#endregion
-
-//#region Array Helpers

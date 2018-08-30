@@ -1,28 +1,38 @@
+/**
+ * navigationLinks
+ *   - Note: use "none" for no link
+ *   - Note2: Max subMenu Level is 2 curretly
+ */
 export const navigationLinks = {
   home : {
     label: "Home",
     link: "/",
-    noLink: true,
-    hasChildren: false,
+    subMenu: {},
   },
   about : {
     label: "About",
     link: "/about",
-    noLink: true,
-    hasChildren: false,
+    subMenu: {},
   },
   chatbot: {
     label: "Chatbot",
     link: "/chatbot",
-    noLink: true,
-    hasChildren: false,
+    subMenu: {},
   },
-  gipfy: {
-    label: "Giphy",
-    link: "/giphy"
-  },
-  googlemaps: {
-    label: "Google Maps",
-    link: "/google"
+  api: {
+    label: "API's",
+    link: "none",
+    subMenu: {
+      giphy: {
+        label: "Giphy",
+        link: "/giphy",
+        subMenu: {}
+      },
+      googlemaps: {
+        label: "Google Maps",
+        link: "/google",
+        subMenu: {},
+      }
+    }
   }
 }
