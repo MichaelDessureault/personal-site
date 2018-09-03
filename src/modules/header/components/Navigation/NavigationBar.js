@@ -1,36 +1,34 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from "react-router-dom";
 import styles from '../../styles/NavigationStyles.css'
-
-import onClickOutside from "react-onclickoutside"
-import createReactClass from "create-react-class"
 
 import NavigationItem from './NavigationItem'
 import { navigationLinks } from '../../../../helpers/navigation'
-import { keys, objectToArray } from '../../../../helpers/utils'
+import { keys } from '../../../../helpers/utils'
+import { ElementWrapperContainer } from '../../..';
 
 class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div id={"navBar"} className={styles.navBarContainer}>
-        <ul className={styles.navBarItemList}>
-          {objectToArray(navigationLinks).map(navLink =>
-            <NavigationItem
-              level={1}
-              link={navLink.link}
-              label={navLink.label}
-              hasSubMenu={(keys(navLink.subMenu).length !== 0)}
-              subMenu={navLink.subMenu}
-            />)
-          }
-        </ul>
-      </div>
-
+      <ElementWrapperContainer>
+        <div id={"navBar"} className={styles.navBarContainer}>
+          <ul className={styles.navBarItemList}>
+            {keys(navigationLinks).map(key => {
+              const navLink = navigationLinks[key]
+              return (
+                <NavigationItem
+                  key={key}
+                  level={1}
+                  link={navLink.link}
+                  label={navLink.label}
+                  hasSubMenu={(keys(navLink.submenu).length !== 0)}
+                  submenu={navLink.submenu}
+                />
+              )})
+            }
+          </ul>
+        </div>
+      </ElementWrapperContainer>
     )
   }
 }

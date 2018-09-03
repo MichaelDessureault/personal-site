@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import styles from '../styles/Wrapper.css'
+import styles from '../styles/PageWrapper.css'
 import { HeaderContainer, FooterContainer } from '../../index'
 
 /**
@@ -13,9 +13,11 @@ import { HeaderContainer, FooterContainer } from '../../index'
 class PageWrapper extends Component {
   render () {
     return (
-      <div className={styles.mainContainer}>
+      <div>
         <HeaderContainer />
-        {this.props.children}
+        <div className={styles.innerContainer}>
+          {this.props.children}
+        </div>
         <FooterContainer />
       </div>
     )

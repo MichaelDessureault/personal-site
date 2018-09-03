@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import App from '../components/App'
-import { NavigationBarContainer, WrapperContainer } from '../../index'
+import { PageWrapperContainer } from '../../index'
 
 import { operators as aboutActionCreators } from '../../../store/modules/about'
-import { detectMobile } from '../../../helpers/utils'
 
 class AppContainer extends Component {
   dispatchAboutStartPoint = (value) => {
@@ -17,10 +15,9 @@ class AppContainer extends Component {
   render () {
     return (
       <div id={"AppContainer"}>
-        <WrapperContainer isPageWrapper={true}>
-          <App 
-            dispatchAboutStartPoint={this.dispatchAboutStartPoint}/>
-        </WrapperContainer>
+        <PageWrapperContainer>
+          <App dispatchAboutStartPoint={this.dispatchAboutStartPoint}/>
+        </PageWrapperContainer>
       </div>
     )
   }

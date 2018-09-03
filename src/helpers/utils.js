@@ -165,4 +165,34 @@ export function isUndefinedOrNull(value) {
   return value === undefined || value === null;
 }
 
+/**
+* isValidObject
+*  - checks if the value passed is either undefined or null
+*  - checks if the object contains the keys passed
+* 
+* @param {Object} value 
+* @param {Array} keys
+* @returns Boolean - True if valid, false if invalid
+*/
+export function isValidObject (obj, keys) {
+  // if object is undefined or null, return false
+  if (isUndefinedOrNull(obj)) {
+    return false;
+  }
+
+  // if keys is of type array then check the keys
+  if (isValidType(keys, ["array"])) {
+    // check each key if it's not found then it's invalid
+    for (let i = 0; i < keys.length; i++) {
+      if (!obj.hasOwnProperty(keys[i])) {
+        return false;
+      }
+    }
+  } else {
+    console.warn('isValidObject:: Paramater passed for keys is not of type array')
+  }
+
+  return true;
+}
+
 //#endregion

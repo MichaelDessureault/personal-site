@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from '../styles/HeaderStyles.css'
-import NavigationBar from '../components/Navigation/NavigationBar'
-import { WrapperContainer } from '../../index'
+import NavigationBar from '../components/navigation/NavigationBar'
 
 class HeaderContainer extends Component {
   render () {
     return (
       <div className={styles.header}>
         <div className={styles.headerSection}>
-          <WrapperContainer>
-            <NavigationBar/>
-          </WrapperContainer>
+          <NavigationBar/>
         </div>
       </div>
     )

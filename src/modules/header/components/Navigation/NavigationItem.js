@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import styles from '../../styles/NavigationStyles.css'
-import { navigationLinks } from '../../../../helpers/navigation';
 import { keys, objectToArray } from '../../../../helpers/utils'
+import { Link } from 'react-router-dom'
 
 const InsertLink = ({ link, label, level, hasSubMenu }) => {
   const faIcon = (level === 1) ? "fa-angle-down" : "fa-angle-right"
@@ -41,30 +40,35 @@ class NavigationItem extends Component {
     label: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,  // "none" is for no link
     hasSubMenu: PropTypes.bool.isRequired,
-    subMenu: PropTypes.object.isRequired,
+    submenu: PropTypes.object.isRequired,
   }
 
   generateSubMenuWithSeparator = () => {
     const newMap = []
-    const subMenuArray = objectToArray(this.props.subMenu)
 
-    for (let i = 0; i < subMenuArray.length; i++) {
-      const navLink = subMenuArray[i]
+    const subMenuArrayKeys = keys(this.props.submenu)
+
+    const subMenuArray = objectToArray(this.props.submenu)
+
+    for (let i = 0; i < subMenuArrayKeys.length; i++) {
+      const key = subMenuArrayKeys[i]
+      const navLink = this.props.submenu[key]
 
       // Add the navigation item
       newMap.push(
         <NavigationItem
+          key={key}
           level={this.props.level + 1}
           link={navLink.link}
           label={navLink.label}
-          hasSubMenu={(keys(navLink.subMenu).length !== 0)}
-          subMenu={navLink.subMenu}
+          hasSubMenu={(keys(navLink.submenu).length !== 0)}
+          submenu={navLink.submenu}
         />
       )
 
       // Add the separator is it's not the end
       if (i + 1 !== subMenuArray.length) {
-        newMap.push(<div className={styles.separator}> </div>)
+        newMap.push(<div key={`${key}separator`} className={styles.separator}> </div>)
       }
     }
 

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import About from '../components/About'
-import { WrapperContainer } from '../..';
+import { PageWrapperContainer } from '../../index';
 
 class AboutContainer extends Component {
   render () {
     return (
-      <WrapperContainer isPageWrapper={true}>
+      <PageWrapperContainer>
         <About aboutMeStartPoint={this.props.aboutMeStartPoint}/>
-      </WrapperContainer>
+      </PageWrapperContainer>
     )
   }
 }

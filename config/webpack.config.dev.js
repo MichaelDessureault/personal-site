@@ -157,7 +157,8 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            // test: /\.css$/,
+            test: /^((?!\.?global).)*css$/,
             use: [
               require.resolve('style-loader'),
               {
@@ -189,6 +190,18 @@ module.exports = {
                 },
               },
             ],
+          },
+          
+          /**
+           * Global css.
+           * To import css globally, we have to
+           * do style-name.global.css as the filename
+           * and then import "./style-name.global.css"
+           */
+
+          {
+            test: /\.?global.css$/,
+            use: ["style-loader", "css-loader"]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
